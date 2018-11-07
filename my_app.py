@@ -5,10 +5,19 @@ import pymongo
 import time
 
 print("Starting up the app!")
-client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
-db = client.test_database
 
 while True:
+    try:
+        client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
+        db = client.test_database
+        break
+    except Exception as e:
+        print('Failed to initially connect to mongo - waiting - {}'.format(e))
+
+
+
+while True:
+    time.sleep(100)
     try:
         dt = datetime.datetime.utcnow()
         post = {"author": "James",
