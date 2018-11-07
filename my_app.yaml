@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-demo-app
+  namespace: jbo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-demo-app
+  template:
+    metadata:
+      labels:
+        app: python-demo-app
+    spec:
+      containers:
+      - name: python-demo-app
+        image: quay.io/jamesbroadhead/python-demo-app:latest
+        imagePullPolicy: Always
