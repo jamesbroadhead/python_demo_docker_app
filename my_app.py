@@ -6,15 +6,8 @@ import time
 
 print("Starting up the app!")
 
-while True:
-    try:
-        client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
-        db = client.test_database
-        break
-    except Exception as e:
-        print('Failed to initially connect to mongo - waiting - {}'.format(e))
-
-
+client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500, connectTimeoutMS=500, socketTimeoutMS=500)
+db = client.test_database
 
 while True:
     time.sleep(100)
