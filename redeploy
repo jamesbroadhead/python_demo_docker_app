@@ -1,7 +1,17 @@
 #!/bin/bash
+
+set -x
 git add .
 git ci -m "redeploying"
 git push
 
-kubectl --namespace jbo patch deployment python-demo-app -p \
-  "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
+sleep 20
+
+kubectl --namespace jbo delete -f my_app.yaml
+
+sleep 5
+
+kubectl --namespace jbo apply -f my_app.yaml
+
+#kubectl --namespace jbo patch deployment python-demo-app -p \
+#  "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
