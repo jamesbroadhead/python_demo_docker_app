@@ -7,7 +7,7 @@ import time
 print("Starting up the app!")
 
 while True:
-
+    time.sleep(0.5)
     try:
 
         client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
@@ -20,8 +20,6 @@ while True:
         result = db.posts.insert_one(post)
         print('Posted successfully - {} at {}'.format(result.inserted_id, dt))
     except:
-        #raise # TODO rm
-        print('Failed to post')
-        time.sleep(0.5)
+        print('Failed to post - {}'.format(e))
 
 print("Exiting")
