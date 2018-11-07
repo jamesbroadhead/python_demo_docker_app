@@ -3,11 +3,14 @@
 import datetime
 import pymongo
 import time
+
+print("Starting up the app!")
+
 while True:
 
     try:
 
-        client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017')
+        client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
         db = client.test_database
         dt = datetime.datetime.utcnow()
         post = {"author": "James",
@@ -20,3 +23,5 @@ while True:
         #raise # TODO rm
         print('Failed to post')
         time.sleep(0.5)
+
+print("Exiting")
