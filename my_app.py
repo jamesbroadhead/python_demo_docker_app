@@ -5,13 +5,13 @@ import pymongo
 import time
 
 print("Starting up the app!")
+client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
+db = client.test_database
 
 while True:
     time.sleep(0.5)
     try:
 
-        client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluster.local:27017', serverSelectionTimeoutMS=500)
-        db = client.test_database
         dt = datetime.datetime.utcnow()
         post = {"author": "James",
                 "text": "I wrote to a database on kubernetes",
