@@ -4,7 +4,7 @@ metadata:
   name: python-demo-app
   namespace: jbo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: python-demo-app
