@@ -3,5 +3,5 @@ git add .
 git ci -m "redeploying"
 git push
 
-kubectl patch deployment python-demo-app -p \
+kubectl --namespace jbo patch deployment python-demo-app -p \
   "{\"spec\":{\"template\":{\"metadata\":{\"labels\":{\"date\":\"`date +'%s'`\"}}}}}"
