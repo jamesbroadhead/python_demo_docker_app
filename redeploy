@@ -3,6 +3,7 @@
 set -ex
 pylint -E my_app.py
 ./build
+set +e
 
 git add .
 git ci -m "redeploying"
