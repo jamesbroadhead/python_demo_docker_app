@@ -1,6 +1,8 @@
 #!/bin/bash
 
 set -x
+./build
+
 git add .
 git ci -m "redeploying"
 git push
