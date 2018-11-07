@@ -17,7 +17,7 @@ while True:
 
         result = db.posts.insert_one(post)
         print('Posted successfully - {} at {}'.format(result.inserted_id, dt))
-    except:
+    except Exception as e:
         print('Failed to post - {}'.format(e))
 
 print("Exiting")
