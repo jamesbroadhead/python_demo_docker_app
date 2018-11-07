@@ -9,9 +9,7 @@ client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluste
 db = client.test_database
 
 while True:
-    time.sleep(0.5)
     try:
-
         dt = datetime.datetime.utcnow()
         post = {"author": "James",
                 "text": "I wrote to a database on kubernetes",
