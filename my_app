@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python my_app.py | tee log.txt
+echo "Starting the python app" > log.txt
+python my_app.py | tee -a log.txt
