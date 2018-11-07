@@ -10,7 +10,7 @@ client = pymongo.MongoClient('my-replica-set-0.my-replica-set-svc.jbo.svc.cluste
 db = client.test_database
 
 while True:
-    time.sleep(100)
+    time.sleep(0.1)
     try:
         dt = datetime.datetime.utcnow()
         post = {"author": "James",
