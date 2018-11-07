@@ -7,7 +7,7 @@ git add .
 git ci -m "redeploying"
 git push
 
-sleep 20
+sleep 60
 
 kubectl --namespace jbo delete -f my_app.yaml
 
